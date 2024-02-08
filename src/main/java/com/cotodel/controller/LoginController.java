@@ -57,6 +57,12 @@ public class LoginController extends CotoDelBaseController{
 		return new ModelAndView("index", "command", "");
 	}	
 
+	@GetMapping(value="/test")
+	public ModelAndView testMethod(Model model) {
+		logger.info("opening firstPage");
+		return new ModelAndView("test", "command", "");
+	}	
+
 	@GetMapping(value="/login")
 	public ModelAndView loginPage(Model model) {
 		logger.info("opening loginPage");
