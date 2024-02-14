@@ -23,6 +23,8 @@ public class ApplicationConstantConfig {
 	@Value("${VERIFY_EMAIL}")
 	public String VERIFY_EMAIL;
 	
+	@Value("${getTokenUrl}")
+	public String getTokenUrl;
 	
 	
 	

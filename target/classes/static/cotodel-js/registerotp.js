@@ -193,12 +193,12 @@ function userRegistration(){
             newData = data;
 			var data1 = jQuery.parseJSON(newData);
 			document.getElementById("signinLoader").style.display="none";
-			if(data1.status=="SUCCESS"){
+			if(data1.status==true){
 				 document.getElementById("otsuccmsg").innerHTML="Our Team Will Contact you soon, Thanks for Registration.";
 				 document.getElementById("otmsgdiv").style.display="block";
 				 //document.getElementById("getInTouchUser").reset();
 				 $('#otmsgdiv').delay(5000).fadeOut(400);
-			}else if(data1.status=="FAILURE"){
+			}else if(data1.status==false){
 				 document.getElementById("otfailmsg").innerHTML=data1.message;
 				 document.getElementById("otfailmsgDiv").style.display="block";
 				 $('#otfailmsgDiv').delay(5000).fadeOut(400);
@@ -331,13 +331,13 @@ function verifyEmail(){
             newData = data;
             document.getElementById("emailLoader").style.display="none";
 			var data1 = jQuery.parseJSON(newData);
-			if(data1.status=="SUCCESS"){
+			if(data1.status==true){
 				 document.getElementById("otsuccmsg").innerHTML="You are successfully verified, Thanks for Registration.";
 				 document.getElementById("otmsgdiv").style.display="block";
 				 //document.getElementById("getInTouchUser").reset();
 				 $('#otmsgdiv').delay(5000).fadeOut(400);
 				 document.getElementById("verifybutton").style.display = "none";
-			}else if(data1.status=="FAILURE"){
+			}else if(data1.status==false){
 				 document.getElementById("otfailmsg").innerHTML=data1.message;
 				 document.getElementById("otfailmsgDiv").style.display="block";
 				 $('#otfailmsgDiv').delay(5000).fadeOut(400);
