@@ -37,8 +37,8 @@ public class LoginServiceImpl implements LoginService {
 	//private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
 	
 	@Override
-	public String sendOtp(String userName, String mobile) {	
-		return CommonUtility.userRequest(null,sendOtpRequest(mobile), applicationConstantConfig.GET_OTP);
+	public String sendOtp(String token, String userName, String mobile) {	
+		return CommonUtility.userRequest(token,sendOtpRequest(mobile), applicationConstantConfig.GET_OTP);
 	}
 	
 	public static String sendOtpRequest(String mobile) {
@@ -61,8 +61,8 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public String registerUser(UserRegistrationRequest req) {
-		return CommonUtility.userRequest(null,registerUserRequest(req), applicationConstantConfig.REGISTER_USER);
+	public String registerUser(String token,UserRegistrationRequest req) {
+		return CommonUtility.userRequest(token,registerUserRequest(req), applicationConstantConfig.REGISTER_USER);
 	}
 	
 	public static String registerUserRequest(UserRegistrationRequest req) {
@@ -173,14 +173,20 @@ public class LoginServiceImpl implements LoginService {
 			}
 
 	@Override
-	public String verifyRegisterUser(UserRegistrationRequest userForm) {
-		return CommonUtility.userRequest(null,registerVerifyRequest(userForm), applicationConstantConfig.VERIFY_EMAIL);
+	public String verifyRegisterUser(String toekn,UserRegistrationRequest userForm) {
+		return CommonUtility.userRequest(toekn,registerVerifyRequest(userForm), applicationConstantConfig.VERIFY_EMAIL);
 		
 	}
 	public static String registerVerifyRequest(UserRegistrationRequest req) {
 		JSONObject request= new JSONObject();		
 		request.put("email", req.getMobile());	
 		return request.toString();
+	}
+
+	@Override
+	public String getToken(String companyId) {
+		// TODO Auto-generated method stub
+		return CommonUtility.getTokenRequest(null,"",companyId,applicationConstantConfig.getTokenUrl);
 	}
 	
 }
