@@ -36,6 +36,7 @@ import com.cotodel.response.UserDetailsEntity;
 import com.cotodel.response.UserForm;
 import com.cotodel.response.UserRegistrationRequest;
 import com.cotodel.service.LoginService;
+import com.cotodel.service.Impl.TokenGenerationImpl;
 import com.cotodel.util.JwtTokenValidator;
 import com.cotodel.util.MessageConstant;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -51,7 +52,10 @@ public class LoginController extends CotoDelBaseController{
 
 	@Autowired
 	LoginService loginservice;
-
+	
+	@Autowired
+	TokenGenerationImpl tokengeneration;
+	
 	@PostMapping(value="/userLogin")
 	public String validateLogin(HttpServletResponse response, HttpServletRequest request,
 			@ModelAttribute("userForm") UserForm userForm, BindingResult result, HttpSession session, Model model,RedirectAttributes redirect) {
@@ -60,7 +64,7 @@ public class LoginController extends CotoDelBaseController{
 		try {
 			String password = null;
 			password= userForm.getPassword1()+userForm.getPassword2()+userForm.getPassword3()+userForm.getPassword4()+userForm.getPassword5()+userForm.getPassword6();      
-			profileRes =loginservice.verifyOtp(userForm.getUserName(),userForm.getMob(),password );
+			profileRes =loginservice.verifyOtp(tokengeneration.getToken(),userForm.getUserName(),userForm.getMob(),password );
 			
 			logger.info(profileRes);
 			
@@ -68,17 +72,18 @@ public class LoginController extends CotoDelBaseController{
 				
 				profileJsonRes= new JSONObject(profileRes);
 				
-				if(profileJsonRes.getString("status")!=null 
-						&& profileJsonRes.getString("status").equalsIgnoreCase(MessageConstant.RESPONSE_SUCCESS)) {
+				if(profileJsonRes.getBoolean("status") 
+						&& profileJsonRes.getString("message").equalsIgnoreCase(MessageConstant.RESPONSE_SUCCESS)) {
 				
 					//set token in session
-					request.getSession(true).setAttribute("name", profileJsonRes.getJSONObject("data").getString("username"));									  
-					request.getSession(true).setAttribute("cotodel", profileJsonRes.getString("token"));
+					//request.getSession(true).setAttribute("name", profileJsonRes.getJSONObject("user").getString("username"));									  
+					//request.getSession(true).setAttribute("cotodel", profileJsonRes.getString("token"));
 					
-					obj =  JwtTokenValidator.parseToken(profileJsonRes.getString("token"));
+					//obj =  JwtTokenValidator.parseToken(profileJsonRes.getString("token"));
 				
 					// switch case to identify the user screen login
-					switch (String.valueOf(profileJsonRes.getJSONObject("data").getInt("role"))) {	
+					//switch (String.valueOf(profileJsonRes.getJSONObject("user").getInt("role"))) {	
+					switch (String.valueOf("0")) {	
 					case "1":
 						screenName="index";
 						model.addAttribute("message", "No Role assigned to User. Please contact to Organisation Admin !!");

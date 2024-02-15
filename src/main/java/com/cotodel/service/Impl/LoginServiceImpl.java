@@ -48,8 +48,8 @@ public class LoginServiceImpl implements LoginService {
 	}
 	
 	@Override
-	public String verifyOtp(String userName, String mob, String otp) {
-		return CommonUtility.userRequest(null,verifyOtpOrLoginRequest(mob,otp), applicationConstantConfig.VERFY_OTP);
+	public String verifyOtp(String token,String userName, String mob, String otp) {
+		return CommonUtility.userRequest(token,verifyOtpOrLoginRequest(mob,otp), applicationConstantConfig.VERFY_OTP);
 	}
 	
 	
