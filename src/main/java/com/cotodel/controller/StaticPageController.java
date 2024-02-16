@@ -48,17 +48,17 @@ public class StaticPageController extends CotoDelBaseController{
 		logger.info("opening companyDetailPage");
 		String token = (String) session.getAttribute("cotodel");
 		if(token!=null) {
-			UserDetailsEntity obj = JwtTokenValidator.parseToken(token);
-			if(obj!=null) {
-				model.addAttribute("name",obj.getName());
-				model.addAttribute("org",obj.getOrgName());
-				model.addAttribute("mobile",obj.getMobile());
-				model.addAttribute("email",obj.getEmail());
-				return "company-details";
-			}
-			
+//			UserDetailsEntity obj = JwtTokenValidator.parseToken(token);
+//			if(obj!=null) {
+//				model.addAttribute("name",obj.getName());
+//				model.addAttribute("org",obj.getOrgName());
+//				model.addAttribute("mobile",obj.getMobile());
+//				model.addAttribute("email",obj.getEmail());
+//				return "company-details";
+//			}
+			return "company-details";
 		}
-		return "redirect:/login";
+		return "redirect:/index";
 	}	
 	@GetMapping(value="/dashboard")
 	public String dashboard(Model model) {
@@ -66,15 +66,16 @@ public class StaticPageController extends CotoDelBaseController{
 		String token = (String) session.getAttribute("cotodel");
 		if(token!=null) {
 			UserDetailsEntity obj = JwtTokenValidator.parseToken(token);
-			if(obj!=null) {
-				model.addAttribute("name",obj.getName());
-				model.addAttribute("org",obj.getOrgName());
-				model.addAttribute("mobile",obj.getMobile());
-				model.addAttribute("email",obj.getEmail());
-				return "dashboard";
-			}
+//			if(obj!=null) {
+//				model.addAttribute("name",obj.getName());
+//				model.addAttribute("org",obj.getOrgName());
+//				model.addAttribute("mobile",obj.getMobile());
+//				model.addAttribute("email",obj.getEmail());
+//				return "dashboard";
+//			}
+			return "dashboard";
 		}
-		return "redirect:/login";
+		return "redirect:/index";
 		
 	}
 	@GetMapping(value="/dashboard1")

@@ -34,7 +34,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.cotodel.properties.ApplicationConstantConfig;
 import com.cotodel.response.UserDetailsEntity;
 import com.cotodel.response.UserForm;
-import com.cotodel.response.UserRegistrationRequest;
 import com.cotodel.service.LoginService;
 import com.cotodel.service.Impl.TokenGenerationImpl;
 import com.cotodel.util.JwtTokenValidator;
@@ -76,21 +75,21 @@ public class LoginController extends CotoDelBaseController{
 						&& profileJsonRes.getString("message").equalsIgnoreCase(MessageConstant.RESPONSE_SUCCESS)) {
 				
 					//set token in session
-					//request.getSession(true).setAttribute("name", profileJsonRes.getJSONObject("user").getString("username"));									  
+					request.getSession(true).setAttribute("email", profileJsonRes.getJSONObject("data").getString("email"));									  
+					request.getSession(true).setAttribute("cotodel", profileJsonRes.getJSONObject("data").getString("mobile"));
 					//request.getSession(true).setAttribute("cotodel", profileJsonRes.getString("token"));
 					
 					//obj =  JwtTokenValidator.parseToken(profileJsonRes.getString("token"));
 				
 					// switch case to identify the user screen login
-					//switch (String.valueOf(profileJsonRes.getJSONObject("user").getInt("role"))) {	
-					switch (String.valueOf("0")) {	
+					switch (String.valueOf(profileJsonRes.getJSONObject("data").getInt("role_id"))) {	
 					case "1":
 						screenName="index";
 						model.addAttribute("message", "No Role assigned to User. Please contact to Organisation Admin !!");
 						break;		
 					case "0":
 						screenName="dashboard";
-						model.addAttribute("name",profileJsonRes.getJSONObject("data").getString("username"));
+						model.addAttribute("name",profileJsonRes.getJSONObject("data").getString("email"));
 						break;		
 					}
 					return screenName;
