@@ -121,8 +121,6 @@
                 </nav>
 
 
-
-
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -156,7 +154,7 @@
                                     <div class="col-10 col-sm-8 col-md-7 col-lg-5 mx-auto company-dtl-wrap">
                                         <div class="card-form">
                                             <label for="">Enter GSTN</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" id="gstNumber" name="gstNumber" class="form-input">
                                         </div>
 
                                         <div class="tip-wrap">
@@ -176,9 +174,12 @@
                                     <div class="col-10 col-sm-8 col-md-7 col-lg-5 mx-auto company-dtl-wrap">
                                         <div class="card-form">
                                             <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" id="orgType" name="orgType">
                                                 <option selected="">Organization type*</option>
-                                                <option value="1"></option>
+                                                <option value="1">Org1</option>
+                                                <option value="2">org2</option>
+                                                <option value="3">org3</option>
+                                                <option value="4">org4</option>
                                             </select>
                                         </div>
 
@@ -188,7 +189,7 @@
 
                                         <div class="card-form my-3">
                                             <label for="">Enter PAN</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="panNumber" name="panNumber">
                                         </div>
 
                                         <div class="tip-wrap justify-content-start">
@@ -207,7 +208,7 @@
                                     <div class="col-10 col-sm-8 col-md-7 col-lg-5 mx-auto company-dtl-wrap">
                                         <div class="card-form my-3">
                                             <label for="">Brand Name</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="brandName" name="brnadName">
                                         </div>
 
                                         <div class="tip-wrap justify-content-start">
@@ -217,9 +218,12 @@
 
                                         <div class="card-form">
                                             <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" id="orgType2" name="orgType2"  >
                                                 <option selected="">Organization type*</option>
-                                                <option value="1"></option>
+                                                <option value="1">org1</option>
+                                                <option value="2">org2</option>
+                                                <option value="3">org3</option>
+                                                <option value="4">org4</option>
                                             </select>
                                         </div>
 
@@ -229,11 +233,14 @@
                                         </div>
 
                                         <div class="card-form">
-                                            <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                        <input type="text" class="form-input" id="companyPan" name="companyPan">
+                                          <!--   <select class="form-select form-control no-bg border-0"
+                                                aria-label="Default select example" id="companyPan" name="companyPan">
                                                 <option selected="">Company PAN*</option>
-                                                <option value="1"></option>
-                                            </select>
+                                                <option value="1">companypan1</option>
+                                                <option value="2">companypan2</option>
+                                                <option value="3">companypan3</option>
+                                            </select>  -->
                                         </div>
 
                                         <div class="tip-wrap justify-content-start">
@@ -243,37 +250,41 @@
 
                                         <div class="card-form my-3">
                                             <label for="">Company Name</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="companyName" name="companyName">
                                         </div>
 
                                         <div class="card-form my-3">
                                             <label for="">Enter Registered office Address*</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="registeredAddress" name="registeredAddress"> 
                                         </div>
 
                                         <div class="card-form my-3">
                                             <label for="">Address line 2</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="addressLine2" name="addressLine2">
                                         </div>
 
                                         <div class="card-form my-3">
                                             <label for="">Enter PIN Code*</label>
-                                            <input type="text" class="form-input">
+                                            <input type="text" class="form-input" id="pinCode" name="pinCode">
                                         </div>
 
                                         <div class="card-form">
-                                            <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                         <input type="text" class="form-input" id="companyPan2" name="companyPan2">
+                                           <!--  <select class="form-select form-control no-bg border-0"
+                                                aria-label="Default select example" id="companyPan2" name="companyPan2">
                                                 <option selected="">Company PAN*</option>
-                                                <option value="1"></option>
-                                            </select>
+                                                <option value="1">comapnyPan1</option>
+                                                <option value="2">comapnyPan2</option>
+                                            </select> -->
                                         </div>
 
                                         <div class="card-form my-3">
                                             <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                                aria-label="Default select example" id="state" name="state">
                                                 <option selected="">Select State*</option>
-                                                <option value="1"></option>
+                                                <option value="1">UP</option>
+                                                <option value="2">Delhi</option>
+                                                <option value="3">Noida</option>
                                             </select>
                                         </div>
 
@@ -296,9 +307,9 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck1"
-                                                    checked="">
-                                                <label class="custom-control-label text-left" for="customCheck1">Payroll
-                                                    Enabled.</label>
+                                                 name="customCheck1" checked="" >
+                                                <label class="custom-control-label text-left" for="customCheck1"
+                                                >Payroll Enabled.</label>
                                             </div>
                                         </div>
 
@@ -311,11 +322,12 @@
                                         </div>
 
                                         <div class="card-form">
-                                            <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example">
+                                        <input type="date" class="form-input" id="payrollDate" name="payrollDate">
+                                           <!--  <select class="form-select form-control no-bg border-0"
+                                                aria-label="Default select example" id="payrollDate" name="payrollDate">
                                                 <option selected="">Select Payroll Date*</option>
-                                                <option value="1"></option>
-                                            </select>
+                                               
+                                            </select> -->
                                         </div>
 
                                         <div class="tip-wrap justify-content-start">
@@ -326,10 +338,10 @@
 
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck2" 
+                                                name="customCheck2">
                                                 <label class="custom-control-label text-left"
-                                                    for="customCheck2">Automatically run payroll on selected
-                                                    date</label>
+                                                    for="customCheck2">Automatically run payroll on selected date</label>
                                             </div>
                                         </div>
 
@@ -342,6 +354,7 @@
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck3"
+                                                 name="customCheck3"
                                                     checked>
                                                 <label class="custom-control-label text-left" for="customCheck3">Let
                                                     employees request salary advances </label>
@@ -381,8 +394,8 @@
 
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck4"
-                                                    checked>
+                                                <input type="checkbox" class="custom-control-input" id="customCheck4" 
+                                                name="customCheck4" checked>
                                                 <label class="custom-control-label text-left" for="customCheck4">Let
                                                     employees request salary advances </label>
                                             </div>
@@ -435,7 +448,7 @@
 
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck5"
+                                                <input type="checkbox" class="custom-control-input" id="customCheck5" name="customCheck5"
                                                     checked>
                                                 <label class="custom-control-label text-left"
                                                     for="customCheck5">Consider FBP allowance to be taxable by default
