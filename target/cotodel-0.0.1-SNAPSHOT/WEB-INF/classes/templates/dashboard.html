@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta id="ctx" name="ctx" th:content="${#httpServletRequest.getContextPath()}" />
+
+    <title>Dashboard</title>
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+		 <ul class="navbar-nav bg-dark-sidebar sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon">
+                    <img src="img/avatar.png" alt="" width="36">
+                </div>
+                <div class="sidebar-brand-text mx-2 text-left">Name here <br> <span class="text-muted text-sm" th:text="${name}"></span></div>
+                
+                <!--  <div class="dropdown-item dropdown-footer form-group mb-0" >
+            <a class="float-right btn text-white custom-btn-dark btn-sm mb-0"  th:href="@{/logout}">
+		          <i class="fas fa-user-circle"></i> Logout         
+		        </a>
+          </div> -->     
+                
+            </a>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active mt-3">
+                <a class="nav-link" href="index.html">
+                    <img src="img/home.png" alt="" class="mr-2">
+                    <span>Home</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <img src="img/payroll.png" alt="" class="mr-2">
+                    <span>Empolyee Payroll</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <img src="img/incentives.png" alt="" class="mr-2">
+                    <span>Empolyee Incentives</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <img src="img/tds.png" alt="" class="mr-2">
+                    <span>TDS Payment</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <img src="img/pf.png" alt="" class="mr-2">
+                    <span>PF Payment</span></a>
+            </li>
+
+         
+            <!-- Sidebar Toggler (Sidebar) -->
+            
+
+            <li class="nav-item li-btm">               
+                <img src="img/undraw_profile.svg" alt="" width="30" class="mr-2">
+                <span>John Doe</span>
+                <a href="#" class="float-right mt-1"><i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i></a>
+            </li>
+
+            <!-- <div class="text-center">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div> -->
+
+        </ul>
+	
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar static-top shadow">
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav top-nav">
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <span class="mr-2 small">Dashboard</span>      
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw"></i>                          
+                            </a>                            
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <span class="mr-2 small">Empolyee Profile</span>      
+                                <i class="fas fa-ellipsis-v fa-sm fa-fw"></i>                          
+                            </a>                            
+                        </li>
+
+                    </ul>
+                    
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Dear User</span>
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                              
+                               <!--  <div class="dropdown-item dropdown-footer form-group mb-0" >
+            <a class="float-right btn text-white custom-btn-dark btn-sm mb-0"  th:href="@{/logout}">
+		          <i class="fas fa-user-circle"></i> Logout         
+		        </a>
+          </div> -->  
+                              <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" th:href="@{/logout}">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400" > </i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid p-0 p-md-1">
+                     <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="mt-4 bg-white p-3">
+                            <div class="row">
+                                <div class="col-12 col-sm-4 organisation-wrap">
+                                    <h3>Let’s set up your organisation!</h3>
+                                    <div class="stepper"></div>
+                                    <p>0 of 7 completed</p>
+                                    <a href="#"><img src="img/question-mark.png" alt="" class="mr-2">Need help with setup?</a>
+                                </div>
+                                <div class="col-12 col-sm-8">
+                                    <div class="details-wrap">
+                                        <div class="basic-details-wrap-one">
+                                            <h4>Basic Details</h4>
+                                            <div class="basic-details-input">
+                                                <span>1</span>
+                                                <p>Enter company details</p>
+                                                <button class="btn btn-primary">Start</button>
+                                            </div>
+
+                                            <div class="basic-details-input no-bg">
+                                                <span>2</span>
+                                                <p>Set payroll date</p>
+                                                <a href="#"><i class="fas fa-angle-right"></i></a>
+                                            </div>
+
+                                            <div class="basic-details-input no-bg mb-0">
+                                                <span>3</span>
+                                                <p>Set employee salary structure</p>
+                                                <a href="#"><i class="fas fa-angle-right"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="details-wrap">
+                                        <div class="basic-details-wrap">
+                                            <h4>Compliance and people</h4>
+                                            <div class="time">2 steps | 10 mins</div>                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="details-wrap mb-0">
+                                        <div class="basic-details-wrap">
+                                            <h4>KYC verification</h4>
+                                            <div class="time">2 steps | 10 mins</div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center text-md-right my-3">                                            
+                                <a class="btn btn-proceed ml-2 my-1" th:href="@{/dashboard1}">Continue</a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="col-12 col-md-3 welcome-wrap">
+                            <h4>Welcome</h4>
+                            <p>XYZ</p>
+                            <span>NEXT PAYROLL</span>
+                            <b>NA</b>
+                            <span>ACCOUNT BALANCE</span>
+                            <b>&#8377;0.00</b>
+                            <button class="btn bg-white btn-block">UPDATE BALANCE</button>
+                        </div>
+                     </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="js/demo/datatables-demo.js"></script>
+
+</body>
+
+</html>

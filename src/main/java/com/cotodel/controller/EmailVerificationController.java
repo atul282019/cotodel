@@ -31,7 +31,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @CrossOrigin
 public class EmailVerificationController extends CotoDelBaseController{
 	
-	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
+	private static final Logger logger = LoggerFactory.getLogger(EmailVerificationController.class);
 
 	@Autowired
 	public ApplicationConstantConfig applicationConstantConfig;

@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.cotodel.response.UserDetailsEntity;
 import com.cotodel.util.JwtTokenValidator;
-import javax.servlet.http.HttpSession;
 @Controller
 @CrossOrigin
 public class StaticPageController extends CotoDelBaseController{
