@@ -25,6 +25,15 @@ public class ApplicationConstantConfig {
 	
 	@Value("${getTokenUrl}")
 	public String getTokenUrl;
+
+	@Value("${STATE_MASTER}")
+	public String STATE_MASTER;
+
+	@Value("${ORG_MASTER}")
+	public String ORG_MASTER;
+	
+	@Value("${CREARE_COMPANY}")
+	public String CREARE_COMPANY;
 	
 	
 	

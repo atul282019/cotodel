@@ -117,10 +117,15 @@ public class CotoDelAdminFilter implements Filter, WebMvcConfigurer{
 				RequestDispatcher rd = request.getRequestDispatcher("companyDetails01");
 				rd.forward(request, response);
 			}
+			else if(requestURI.contains("/saveCompanyDetails")){
+				RequestDispatcher rd = request.getRequestDispatcher("saveCompanyDetails");
+				rd.forward(request, response);
+			}
 			else if(requestURI.contains("/logout")){
 				RequestDispatcher rd = request.getRequestDispatcher("logout");
 				rd.forward(request, response);
 			}
+			
 			else{
 				RequestDispatcher rd = request.getRequestDispatcher("index");
 				rd.forward(request, response);
