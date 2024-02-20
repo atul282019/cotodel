@@ -29,7 +29,7 @@
 
 </head>
 
-<body id="page-top" onload="getOrgMaster(),getStateMaster()">
+<body id="page-top" onload="getOrgMaster(),getStateMaster(),getOrgMaster2()">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -170,7 +170,7 @@
 
                                         <div class="text-center text-md-center my-3">
                                             <div class="btn btn-proceed-border my-1">Don't have GSTIN</div>
-                                            <input type="button" value="Continue" class="btn btn-proceed ml-2 my-1 next" onclick="validateGstNumber()" />
+                                            <input type="button" value="Continue" class="btn btn-proceed ml-2 my-1 next"  oninput="this.value = this.value.toUpperCase()" onclick="validateGstNumber()" />
                                             <!-- <div class="btn btn-proceed ml-2 my-1 next" id="next1" >Continue</div> -->
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
 
                                         <div class="card-form my-3">
                                             <label for="">Enter PAN</label>
-                                            <input type="text" class="form-input" id="pan" name="pan">
+                                            <input type="text" class="form-input" id="pan" name="pan" maxlength="10"  oninput="this.value = this.value.toUpperCase()">
                                             
                                         </div>
 										<div class="error-msg" id="panError" style="color:red"></div>
@@ -213,7 +213,7 @@
                                     <div class="col-10 col-sm-8 col-md-7 col-lg-5 mx-auto company-dtl-wrap">
                                         <div class="card-form my-3">
                                             <label for="">Brand Name</label>
-                                            <input type="text" class="form-input" id="brandName" name="brandName">
+                                            <input type="text" class="form-input" id="brandName" name="brandName" maxlength="100">
                                         </div>
 										<div class="error-msg" id="brandNameError" style="color:red"></div>
 										
@@ -226,10 +226,7 @@
                                             <select class="form-select form-control no-bg border-0"
                                                 aria-label="Default select example" id="orgType2" name="orgType2"  >
                                                 <option selected="">Organization type*</option>
-                                                <option value="1">org1</option>
-                                                <option value="2">org2</option>
-                                                <option value="3">org3</option>
-                                                <option value="4">org4</option>
+                                                
                                             </select>
                                         </div>
 										<div class="error-msg" id="orgType2Error" style="color:red"></div>
@@ -239,7 +236,7 @@
                                         </div>
 
                                         <div class="card-form">
-                                        <input type="text" class="form-input" id="panDetails" name="panDetails">
+                                        <input type="text" class="form-input" id="panDetails" name="panDetails" maxlength="100">
                                           <!--   <select class="form-select form-control no-bg border-0"
                                                 aria-label="Default select example" id="companyPan" name="companyPan">
                                                 <option selected="">Company PAN*</option>
@@ -257,41 +254,34 @@
 
                                         <div class="card-form my-3">
                                             <label for="">Company Name</label>
-                                            <input type="text" class="form-input" id="companyName" name="companyName">
+                                            <input type="text" class="form-input" id="companyName" name="companyName" maxlength="100">
                                         </div>
 										<div class="error-msg" id="companyNameError" style="color:red"></div>
                                         <div class="card-form my-3">
                                             <label for="">Enter Registered office Address*</label>
-                                            <input type="text" class="form-input" id="officeAddress" name="officeAddress"> 
+                                            <input type="text" class="form-input" id="officeAddress" name="officeAddress" maxlength="100"> 
                                         </div>
 										<div class="error-msg" id="officeAddressError" style="color:red"></div>
                                         <div class="card-form my-3">
                                             <label for="">Address line 2</label>
-                                            <input type="text" class="form-input" id="addressLine" name="addressLine">
+                                            <input type="text" class="form-input" id="addressLine" name="addressLine" maxlength="100">
                                         </div>
 										<div class="error-msg" id="addressLineError" style="color:red"></div>
                                         <div class="card-form my-3">
                                             <label for="">Enter PIN Code*</label>
-                                            <input type="text" class="form-input" id="pinCode" name="pinCode">
+                                            <input type="text" class="form-input" id="pinCode" name="pinCode" maxlength="6" 
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
                                         </div>
 										<div class="error-msg" id="pinCodeError" style="color:red"></div>
                                         <div class="card-form">
                                          <input type="text" class="form-input" id="companyPan2" name="companyPan2">
-                                           <!--  <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example" id="companyPan2" name="companyPan2">
-                                                <option selected="">Company PAN*</option>
-                                                <option value="1">comapnyPan1</option>
-                                                <option value="2">comapnyPan2</option>
-                                            </select> -->
+                                          
                                         </div>
 										<div class="error-msg" id="companyPan2Error" style="color:red"></div>
                                         <div class="card-form my-3">
                                             <select class="form-select form-control no-bg border-0"
                                                 aria-label="Default select example" id="stateCode" name="stateCode">
-                                                <option selected="">Select State*</option>
-                                                <option value="1">UP</option>
-                                                <option value="2">Delhi</option>
-                                                <option value="3">Noida</option>
+                                               
                                             </select>
                                         </div>
 										<div class="error-msg" id="stateCodeError" style="color:red"></div>
@@ -332,11 +322,7 @@
 
                                         <div class="card-form">
                                         <input type="date" class="form-input" id="paidDate" name="paidDate">
-                                           <!--  <select class="form-select form-control no-bg border-0"
-                                                aria-label="Default select example" id="payrollDate" name="payrollDate">
-                                                <option selected="">Select Payroll Date*</option>
-                                               
-                                            </select> -->
+                                          
                                         </div>
 										<div class="error-msg" id="paidDateError" style="color:red"></div>
                                         <div class="tip-wrap justify-content-start">
@@ -385,15 +371,10 @@
                                         <div class="text-center text-md-center my-3 disabled">
                                             <div class="btn btn-proceed-border my-1 border-0">Back to setup guide</div>
                                             <div class="btn btn-proceed ml-2 my-1 back" id="back4">Back</div>
-                                             <div id="saveNext" >
-                                            <input type="button"  class="btn btn-proceed ml-2 my-1" value="Save" onclick="validateFormAndSubmit()" />
-                                            </div>
                                             
-                                            <div id="nextDiv" style="display: none" >
-                                            <!-- <div class="btn btn-proceed ml-2 my-1 next" id="next3">Continue</div> -->
-                                            <!--  <div class="btn btn-proceed ml-2 my-1 next" id="next4" > Next</div> -->
-                                            <input type="button"  class="btn btn-proceed ml-2 my-1" value="Next" onclick="openTab5()" />
-                                            </div>
+                                            <input id="saveNext" type="button"  class="btn btn-proceed ml-2 my-1" value="Save" onclick="validateFormAndSubmit()" />
+                                            <input id="nextDiv" style="display: none" type="button"  class="btn btn-proceed ml-2 my-1" value="Next" onclick="openTab5()" />
+                                          </div>
                                         
                                     </div>
                                 </div>
