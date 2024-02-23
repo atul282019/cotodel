@@ -80,6 +80,10 @@ public class LoginController extends CotoDelBaseController{
 					//request.getSession(true).setAttribute("cotodel", profileJsonRes.getString("token"));
 					
 					//obj =  JwtTokenValidator.parseToken(profileJsonRes.getString("token"));
+					
+					session.setAttribute("email", profileJsonRes.getJSONObject("data").getString("email"));
+					session.setAttribute("mobile", profileJsonRes.getJSONObject("data").getString("mobile"));
+					
 				
 					// switch case to identify the user screen login
 					switch (String.valueOf(profileJsonRes.getJSONObject("data").getInt("role_id"))) {	

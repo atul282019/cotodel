@@ -102,6 +102,20 @@ function validateFormAndSubmit(){
                 if (gstinformat.test(gstnNo)) {    
                     document.getElementById("gstnNoError").innerHTML="";
 					document.getElementById("gstnNo").focus();
+					
+					return true;   
+                } else {    
+                   document.getElementById("gstnNoError").innerHTML="Please Enter Valid GSTN";
+					document.getElementById("gstnNo").focus();
+					return false;     
+                }   
+	}  
+	function validateGstNumber() {
+				var gstnNo = document.getElementById("gstnNo").value;
+                var gstinformat = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;   
+                if (gstinformat.test(gstnNo)) {    
+                    document.getElementById("gstnNoError").innerHTML="";
+					document.getElementById("gstnNo").focus();
 					$("#form2").show();
                     $("#form1").hide();
 					return true;   
@@ -127,9 +141,16 @@ function validateFormAndSubmit(){
 					return false;
 				}else{
 					document.getElementById("organizationTypeError").innerHTML="";
-					$("#form3").show();
-                	$("#form2").hide();
+					
 				}
+				
+				 if (pan =="") {    
+                    document.getElementById("panError").innerHTML="Please Enter Valid Pan Number";
+					document.getElementById("pan").focus();
+					return false;
+                } else {    
+                   document.getElementById("panError").innerHTML="";    
+                }  
                 if (panNoFormat.test(pan)) {    
                     document.getElementById("panError").innerHTML="";
                 } else {    
@@ -137,7 +158,8 @@ function validateFormAndSubmit(){
 					document.getElementById("pan").focus();
 					return false;     
                 }   
-                
+                $("#form3").show();
+                $("#form2").hide();
                 
 	}  
 	
@@ -268,19 +290,29 @@ function validateFormAndSubmit() {
             newData = data;
 			var data1 = jQuery.parseJSON(newData);
 			console.log(data1)
-			if(data1.status==true){
+			if(data1.status==false){
 				 document.getElementById("successmsg").innerHTML="Data Saved Successfully";
 				 document.getElementById("successmsgdiv").style.display="block";
 				 //document.getElementById("saveorg").reset();
-				 $('#successmsgdiv').delay(5000).fadeOut(400);
-				 $("#form5").show();
-                 $("#form4").hide();
-			}else if(data1.status==false){
+				 //$('#successmsgdiv').delay(5000).fadeOut(400);
+				// $("#form5").show();
+				document.getElementById("saveNext").style.display="None";
+				//document.getElementById("nextDiv").style.display="flex";
+				$('#nextDiv').show();
+				$("#form4").hide();
+                $("#form5").show();
+                $("#tab2").addClass("active");
+				
+                // $("#form4").hide();
+			}else if(data1.status==true){
 				 document.getElementById("failmsg").innerHTML=data1.message;
 				 document.getElementById("failmsgDiv").style.display="block";
-				 $('#failmsgDiv').delay(5000).fadeOut(400);
-				 $("#form5").show();
-                 $("#form4").hide();
+				 //$('#failmsgDiv').delay(5000).fadeOut(400);
+				 //$("#form5").show();
+                 //$("#form4").hide();
+                 document.getElementById("saveNext").style.display="block";
+				 document.getElementById("nextDiv").style.display="None";
+				 $('#nextDiv').hide();
 			}else{
 				 document.getElementById("failmsgDiv").style.display="none";
 				 document.getElementById("successmsgdiv").style.display="none";
@@ -293,3 +325,11 @@ function validateFormAndSubmit() {
     });			
                
 	}  
+	
+	
+	function openTab5(){
+		
+				$("#form4").hide();
+                $("#form5").show();
+                $("#tab2").addClass("active");
+	}
